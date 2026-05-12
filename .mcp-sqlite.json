@@ -1,0 +1,5 @@
+{
+  "database": "./data/dev.db",
+  "readonly": true,
+  "wal": true
+}

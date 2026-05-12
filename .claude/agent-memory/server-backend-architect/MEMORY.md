@@ -1,0 +1,6 @@
+- [Test runner: node:test + tsx](test-runner.md) — no vitest dep; tests use Node's built-in runner via `npm test`.
+- [Drizzle better-sqlite3 transactions are sync](sync-transactions.md) — callback must return synchronously; resolver wraps it inside an async function.
+- [Audit writer contract](audit-writer.md) — `writeAuditEvent(tx, event)` is the only runtime path that inserts into `audit_events`; seed.ts is allowed an exception as a fixture loader.
+- [Rule attribution model](rule-attribution.md) — proposals are attributed to the LAST shifting (multiply/set) rule; floor/ceiling clamp without changing attribution.
+- [Server build toolchain](server-build-toolchain.md) — tsc with NodeNext; every relative import inside src/server uses explicit `.js` extensions.
+- [Deployment: Docker + Fly](deployment-docker-fly.md) — single container serves API+SPA; reset-on-boot wipes SQLite; no persistent volume by design.

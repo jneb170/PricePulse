@@ -1,0 +1,7 @@
+- [Audit emission API](audit-api.md) — writeAuditEvent(tx, event) in src/server/db/audit.ts is the only sanctioned writer
+- [Wire/type drift on dates](wire-date-drift.md) — tRPC v11 no transformer; Date fields arrive as ISO strings, inferred type lies
+- [Engine purity rule](engine-purity.md) — src/server/engine/ must be pure; no I/O, no Date.now(), no Math.random
+- [Rule update event branch](rules-update-branch.md) — three-way branch in rules.update produces exactly one event
+- [Audit router filter typing](audit-filter-typing.md) — z.custom<T>() without check function bypasses runtime validation
+- [Rate-limit batching gap](rate-limit-batching.md) — limiter charges 1 token per POST; httpBatchLink packs N mutations per POST
+- [Rate-limit 429 envelope shape](rate-limit-429-shape.md) — 429 body is plain JSON, not a tRPC envelope; client surfaces parse error

@@ -1,0 +1,17 @@
+node_modules
+dist
+data
+drizzle/meta
+.git
+.gitignore
+.claude
+.vscode
+.env
+.env.*
+.mcp.json
+.mcp-sqlite.json
+*.md
+!README.md
+*.log
+start.err
+start.log

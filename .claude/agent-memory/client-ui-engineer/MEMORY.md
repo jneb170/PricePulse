@@ -1,0 +1,1 @@
+- [Server uses no tRPC transformer](no-trpc-transformer.md) — wire dates arrive as ISO strings even though typed as Date

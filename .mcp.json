@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sqlite": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@graduenz/mcp-sqlite-server"]
+    }
+  }
+}

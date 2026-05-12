@@ -1,0 +1,35 @@
+# Fly.io configuration for the PricePulse demo.
+#
+# Single-tenant demo with no persistent volume — the reset-on-boot path
+# in src/server/scripts/reset-db.ts wipes ./data/dev.db and re-seeds every
+# time the machine starts. That is deliberate; do NOT add a [mounts] block.
+
+app = "pricepulse-demo"
+primary_region = "sjc"
+
+[build]
+
+[env]
+  PORT = "8080"
+  # DATABASE_URL defaults to ./data/dev.db (see src/server/db/config.ts).
+  # Leaving it unset is fine — the reset script also creates ./data/.
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+  [[http_service.checks]]
+    grace_period = "30s"
+    interval = "15s"
+    method = "GET"
+    timeout = "5s"
+    path = "/"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
