@@ -1,4 +1,8 @@
+import { useEffect } from 'react'
 import { useKnownUsers } from '../lib/useKnownUsers'
+import { useDemoUserContext } from '../context/DemoUserContext'
+
+const DEFAULT_USER_NAME = 'Alex Rivera'
 
 /**
  * Top-bar dropdown for selecting the stub-authenticated demo user.
@@ -6,6 +10,11 @@ import { useKnownUsers } from '../lib/useKnownUsers'
  * The user list comes from `trpc.users.list`, which returns the seeded
  * managers. On a fresh seed the dropdown is populated immediately with
  * no user interaction required.
+ *
+ * On first load (no prior selection persisted) the picker auto-selects
+ * "Alex Rivera" once the user list resolves, so the demo is usable
+ * without forcing a manual pick. Once the user touches the picker, that
+ * choice is respected — including the empty placeholder.
  */
 export function DemoUserPicker({
   userId,
@@ -15,6 +24,13 @@ export function DemoUserPicker({
   setUserId: (id: string | null) => void
 }) {
   const { users, isLoading, error } = useKnownUsers()
+  const { hasInteracted, setUserIdDefault } = useDemoUserContext()
+
+  useEffect(() => {
+    if (hasInteracted || userId || users.length === 0) return
+    const fallback = users.find((u) => u.name === DEFAULT_USER_NAME) ?? users[0]
+    if (fallback) setUserIdDefault(fallback.id)
+  }, [hasInteracted, userId, users, setUserIdDefault])
 
   // If the selected id isn't in the list (or list is still loading), show
   // the id as the label so users see what's set.

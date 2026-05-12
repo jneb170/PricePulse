@@ -4,6 +4,8 @@ A dynamic pricing dashboard for a donated-goods retail chain. Ingests simulated 
 
 The architecture story is the point of the project: a pure-function pricing engine, manager-attributed mutations gated at the type level, every price change written atomically with its audit event. The UI is the surface that lets you see those guarantees hold under real interaction.
 
+> See [docs/USER_GUIDE.md](docs/USER_GUIDE.md) for a screen-by-screen walkthrough.
+
 ## Running it locally
 
 Requires Node 22 LTS.

@@ -25,6 +25,7 @@
     "@trpc/react-query": "^11.0.0",
     "@trpc/server": "^11.0.0",
     "better-sqlite3": "^11.10.0",
+    "dig": "^0.0.6",
     "drizzle-orm": "^0.36.4",
     "express": "^4.21.0",
     "react": "^18.3.1",

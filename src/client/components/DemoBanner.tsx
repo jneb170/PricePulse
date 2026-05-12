@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
 const STORAGE_KEY = 'pricepulse:demo-banner-dismissed'
-// TODO: replace with the actual repo URL before sharing.
-export const DEMO_GITHUB_URL = 'https://github.com/PLACEHOLDER/pricepulse'
+export const DEMO_GITHUB_URL = 'https://github.com/jneb170/PricePulse'
 export const DEMO_BANNER_TEXT =
   'Public demo sandbox. Stub authentication — pick any manager. State is shared across visitors and resets when the container restarts.'
 

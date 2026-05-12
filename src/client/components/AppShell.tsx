@@ -1,8 +1,10 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import type { ReactNode } from 'react'
 import { DemoUserPicker } from './DemoUserPicker'
-import { DemoBanner } from './DemoBanner'
+import { DemoBanner, DEMO_GITHUB_URL } from './DemoBanner'
 import { useDemoUserContext } from '../context/DemoUserContext'
+
+const GUIDE_URL = `${DEMO_GITHUB_URL}/blob/main/docs/USER_GUIDE.md`
 
 const NAV: ReadonlyArray<{ to: string; label: string; end?: boolean }> = [
   { to: '/', label: 'Dashboard', end: true },
@@ -55,7 +57,15 @@ export function AppShell({ children }: { children?: ReactNode }) {
               <NavItem key={n.to} to={n.to} label={n.label} end={n.end} />
             ))}
           </nav>
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-1">
+            <a
+              href={GUIDE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded px-3 py-1.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
+            >
+              Guide
+            </a>
             <DemoUserPicker
               userId={demoUser.userId}
               setUserId={demoUser.setUserId}
